@@ -1,3 +1,5 @@
+@import url('http://fonts.cdnfonts.com/css/billabong');
+
 html {
     font-size: 10px;
     font-family: sans-serif;
@@ -7,7 +9,7 @@ html {
     line-height: 1.5;
    }
    h1 {
-    font-family: billabong, 'billabongregular';
+    font-family: 'Billabong';
     text-align: center;
     font-weight: 100;
     font-size: 13rem;
@@ -103,7 +105,7 @@ html {
     resize: vertical;
    }
    .addIcon {
-    background: url("https://image.flaticon.com/icons/svg/60/60740.svg") center no-repeat;
+    background: url("https://cdn-icons-png.flaticon.com/512/2891/2891642.png") center no-repeat;
     background-size: contain;
     padding: 40px;
     display: table;
