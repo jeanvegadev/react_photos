@@ -31,9 +31,11 @@ class Main extends Component {
                 <Route path="/AddPhoto" element={
                     <AddPhoto {...this.props}/>
                 }/>
+
                 <Route path="/single/:id" element={
                     <Single {...this.props}/>
                 }/>
+
                 </Routes>
             </div>
         )

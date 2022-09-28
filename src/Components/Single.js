@@ -10,10 +10,12 @@ function Single (props) {
         console.log(idf);
         const post = props.posts.find((posta)=>posta.id===idf);
         console.log(post);
+        const comments = props.comments[idf] || []
+        const index = props.posts.findIndex((post=>post.Id === idf))
         return(
             <div className='single-photo'>
-                <Photo post={post}/>
-                <Comments/>
+                <Photo post={post} {...props} key={index}/>
+                <Comments addComment={props.addComment} comments={comments} postId={idf}/>
             </div>
         )
 }

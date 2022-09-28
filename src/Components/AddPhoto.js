@@ -17,7 +17,7 @@ class AddPhoto extends Component {
         }
         if (imageDescripcion && imageLink){
             console.log("listo")
-            this.props.addPost(post)
+            this.props.startAddingPost(post)
             this.props.navigate('/')
         }
     }
