@@ -2,10 +2,13 @@ import postss from '../data/posts'
 
 
 const postReducer = function posts(state=postss , action){
-    if (action.type === 'REMOVE_POST'){
-        console.log(action.index)
+    switch (action.type){
+        case 'REMOVE_POST': return state.filter(function(o){
+            return o.id !== action.index
+        });
+        case 'ADD_POST': return [...state, action.post]
+        default: return state
     }
-    
     return state
 }
 

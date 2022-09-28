@@ -17,14 +17,13 @@ class AddPhoto extends Component {
         }
         if (imageDescripcion && imageLink){
             console.log("listo")
-            this.props.onAddPhoto(post)
+            this.props.addPost(post)
             this.props.navigate('/')
         }
     }
     render(){
         return (
         <div>
-            <h1>PhotoWall</h1>
             <div className='form'>
             <form onSubmit={this.handleSubmit}>
                 <input type="text" placeholder='Link' name="link"/>
