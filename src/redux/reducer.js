@@ -11,6 +11,7 @@ function comments(state={}, action){
                 return {...state,
                     [action.postId]: [...state[action.postId], action.comment]}
             }
+        case 'LOAD_COMMENTS': return action.comments
             
         default: return state
     }
@@ -19,6 +20,9 @@ function comments(state={}, action){
 function posts(state=postss , action){
     switch (action.type){
         case 'REMOVE_POST': return state.filter(function(o){
+            console.log('reducer remove post')
+            console.log(action.index)
+            console.log(o.id)
             return o.id !== action.index
         });
         case 'ADD_POST': return [...state, action.post]

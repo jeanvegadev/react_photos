@@ -9,11 +9,15 @@ import {removePost} from '../redux/actions'
 
 
 class Main extends Component {
-    constructor() {
+    constructor(){
         super()
     }
+    state = { loading: true}
     componentDidMount(){
-        this.props.startLoadingPost()
+        this.props.startLoadingPost().then(()=>{
+            this.setState({loading: false})
+        })
+        this.props.startLoadingComments()
     }
     render(){
         console.log('Redux...')
@@ -36,7 +40,7 @@ class Main extends Component {
                 }/>
 
                 <Route path="/single/:id" element={
-                    <Single {...this.props}/>
+                    <Single loading={this.state.loading} {...this.props}/>
                 }/>
 
                 </Routes>

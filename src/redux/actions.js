@@ -1,4 +1,4 @@
-import { getDatabase, ref, update, onValue, remove } from "firebase/database";
+import { getDatabase, ref, update, onValue, remove, push, get} from "firebase/database";
 
 export function startAddingPost(post){
     const dbf = getDatabase();
@@ -13,7 +13,7 @@ export function startLoadingPost(){
     const dbf = getDatabase();
     const Ref = ref(dbf, 'posts');
     return (dispatch) => {
-        return onValue(Ref, (snapshot)=>{
+        return get(Ref).then((snapshot)=>{
             let posts=[];
             snapshot.forEach((childSnapshot)=>{
                 posts.push(childSnapshot.val())
@@ -24,12 +24,43 @@ export function startLoadingPost(){
 }
 
 export function startRemovingPost(index, id){
+    console.log('index'+index)
     const dbf = getDatabase();
     const Ref = ref(dbf, `posts/${id}`);
     return (dispatch) => {
         return remove(Ref).then(()=>{
             dispatch(removePost(index))
         })
+    }
+}
+
+export function startAddingComment(comment, postId){
+    const dbf = getDatabase();
+    return (dispatch) => {
+        return push(ref(dbf,'comments/'+postId),comment).then(()=>{
+            dispatch(startLoadingComments(comment, postId))
+        })
+    }
+}
+
+export function startLoadingComments(){
+    const dbf = getDatabase();
+    const Ref = ref(dbf, 'comments');
+    return (dispatch) => {
+        return onValue(Ref, (snapshot)=>{
+            let comments=[];
+            snapshot.forEach((childSnapshot)=>{
+                comments[childSnapshot.key]= Object.values(childSnapshot.val())
+            })
+            dispatch(loadComments(comments))
+        })
+    }
+}
+
+export function loadComments(comments){
+    return{
+        type: 'LOAD_COMMENTS',
+        comments
     }
 }
 

@@ -9,7 +9,7 @@ class Comments extends Component {
         event.preventDefault();
         const comment = event.target.elements.comment.value;
         const postId = this.props.postId;
-        this.props.addComment(comment, postId)
+        this.props.startAddingComment(comment, postId)
     }
     render(){
         return (

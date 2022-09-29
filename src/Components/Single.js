@@ -12,12 +12,17 @@ function Single (props) {
         console.log(post);
         const comments = props.comments[idf] || []
         const index = props.posts.findIndex((post=>post.Id === idf))
+        if (props.loading === true){
+            return <div className='loader'> ...loading </div>
+        }
+        else{
         return(
             <div className='single-photo'>
                 <Photo post={post} {...props} key={index}/>
-                <Comments addComment={props.addComment} comments={comments} postId={idf}/>
+                <Comments startAddingComment={props.startAddingComment} comments={comments} postId={idf}/>
             </div>
-        )
+             )
+        }
 }
 
 export default Single
