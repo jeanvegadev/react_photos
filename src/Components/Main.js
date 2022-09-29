@@ -12,6 +12,9 @@ class Main extends Component {
     constructor() {
         super()
     }
+    componentDidMount(){
+        this.props.startLoadingPost()
+    }
     render(){
         console.log('Redux...')
         console.log(this.props)

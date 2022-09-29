@@ -22,6 +22,7 @@ function posts(state=postss , action){
             return o.id !== action.index
         });
         case 'ADD_POST': return [...state, action.post]
+        case 'LOAD_POST': return action.posts
         default: return state
     }
 }

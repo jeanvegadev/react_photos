@@ -10,7 +10,7 @@ function Photo (props) {
             <figcaption> <p> {post.description} </p></figcaption>
             <div className='button-container'>
             <button className='remove-button' onClick={()=>{
-                props.removePost(post.id)
+                props.startRemovingPost(props.index, post.id)
                 props.navigate('/')
             }}>
                  Remove 
